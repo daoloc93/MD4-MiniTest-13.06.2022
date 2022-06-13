@@ -11,18 +11,16 @@ import java.util.Optional;
 public class ProductService implements IProductService{
 
     @Autowired
-    IProductRepository productRepository;
+    private IProductRepository productRepository;
 
     @Override
     public Iterable<Product> findAll() {
         return productRepository.findAll();
     }
 
-
-
     @Override
     public Optional<Product> findById(Long id) {
-        return Optional.empty();
+        return productRepository.findById(id);
     }
 
     @Override
@@ -37,6 +35,22 @@ public class ProductService implements IProductService{
 
     @Override
     public Iterable<Product> findAllByNameContaining(String name) {
-        return productRepository.findAllByName;
+        return productRepository.findAllByNameContaining(name);
     }
+
+    @Override
+    public Iterable<Product> findAllByOrderByPrice() {
+        return productRepository.findAllByOrderByPrice();
+    }
+
+    @Override
+    public Iterable<Product> find5NewestProduct() {
+        return productRepository.find5NewestProduct();
+    }
+
+    @Override
+    public Iterable<Product> findAllByPriceBetween(int min, int max) {
+        return productRepository.findAllByPriceBetween(min, max);
+    }
+
 }
